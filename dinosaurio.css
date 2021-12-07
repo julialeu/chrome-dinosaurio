@@ -1,0 +1,66 @@
+body {
+    margin: 0px;
+}
+
+#board {
+    background-color: blue;
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+
+#player {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 190px;
+    left: 80px;
+}
+
+#player img {
+    width: 70px;
+    height: 70px;
+}
+
+#background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("images/background.png");
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-size: auto 100%;
+    animation: backgroundMove 5s linear infinite;
+
+}
+
+/*#background img {*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    animation: backgroundMove 5s linear infinite;*/
+/*}*/
+
+.playerJump {
+    animation: playerJump 1s linear;
+
+}
+@keyframes playerJump {
+    0% {
+        bottom: 190px;
+    }
+    45%, 55% {
+        bottom: 300px;
+    }
+}
+
+@keyframes backgroundMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -3000px 0;
+    }
+}
