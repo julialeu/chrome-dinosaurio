@@ -6,28 +6,34 @@ const buttonPlayStop = document.getElementById("buttonPlayStop");
 let scoreInterval;
 let score = 0;
 
-document.addEventListener("click", function(){
-    player.classList.add("playerJump");
+document.addEventListener('click', function () {
+    playerJump();
+    console.log('foo');
 })
+
+function playerJump() {
+    player.classList.add("playerJump");
+
+}
+
+// document.addEventListener("click", function(){
+//     player.classList.add("playerJump");
+// })
 
 player.addEventListener('animationend',() => {
-    player.classList.remove("playerJump");
-})
+    removeJump();
+});
 
-scoreInterval = setInterval(() => {
-    score++;
-    document.getElementById("score").innerHTML = '<br>' + score
-}, 1000)
+function removeJump() {
+    player.classList.remove("playerJump");
+
+}
+
+resumeScore();
 
 function resumeGame() {
-    cactus.style.animationPlayState = 'running';
-    player.style.animationPlayState = 'running';
-    background.style.animationPlayState = 'running';
-
-    scoreInterval = setInterval(() => {
-        score++;
-        document.getElementById("score").innerHTML = '<br>' + score
-    }, 1000)
+    resumenAnimation();
+    resumeScore();
 }
 
 buttonPlayStop.addEventListener('click', () => {
@@ -41,11 +47,43 @@ buttonPlayStop.addEventListener('click', () => {
 })
 
 function pauseGame() {
+    pauseAnimation();
+    stopScore();
+}
+
+function stopScore() {
+    clearInterval(scoreInterval);
+}
+
+function resumeScore() {
+    scoreInterval = setInterval(() => {
+        score++;
+        document.getElementById("score").innerHTML = '<br>' + score
+    }, 1000)
+}
+
+function pauseAnimation() {
     cactus.style.animationPlayState = 'paused';
     player.style.animationPlayState = 'paused';
     background.style.animationPlayState = 'paused';
-    clearInterval(scoreInterval);
+}
 
+function resumenAnimation() {
+    cactus.style.animationPlayState = 'running';
+    player.style.animationPlayState = 'running';
+    background.style.animationPlayState = 'running';
+}
 
+const restartButton = document.getElementById("restartGame");
 
+restartButton.addEventListener('click', restartGame)
+
+function restartGame() {
+    resetScore();
+    removeJump();
+}
+
+function resetScore() {
+    score = 0;
+    document.getElementById("score").innerHTML = '<br>' + score;
 }
