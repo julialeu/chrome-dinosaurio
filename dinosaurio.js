@@ -5,8 +5,9 @@ const background = document.getElementById("background");
 const buttonPlayStop = document.getElementById("buttonPlayStop");
 let scoreInterval;
 let score = 0;
+const board = document.getElementById("board");
 
-document.addEventListener('click', function () {
+board.addEventListener('click', function () {
     playerJump();
     console.log('foo');
 })
@@ -81,9 +82,26 @@ restartButton.addEventListener('click', restartGame)
 function restartGame() {
     resetScore();
     removeJump();
+    void cactus.offsetWidth;
+    cactus.classList.remove("cactusMovement");
+    cactus.classList.add("cactusMovement");
+
 }
 
 function resetScore() {
     score = 0;
     document.getElementById("score").innerHTML = '<br>' + score;
 }
+
+document.addEventListener("keyup", (event) => {
+    const key = event.key;
+    if(key == 'ArrowUp') {
+        playerJump();
+    }
+
+    const keyLowerCase = key.toLowerCase();
+
+    if (keyLowerCase == "w") {
+        playerJump();
+    }
+})

@@ -38,7 +38,7 @@ body {
 }
 
 .playerJump {
-    animation: playerJump 10s linear;
+    animation: playerJump 1s linear;
 
 }
 @keyframes playerJump {
@@ -65,12 +65,13 @@ body {
     height: 80px;
     bottom: 180px;
     right: 0;
-    animation: cactusMovement 2s linear infinite;
     border: solid red;
-
-
 }
 
+.cactusMovement {
+    animation: cactusMovement 2s linear infinite;
+
+}
 #cactus img {
     max-width: 100%;
     max-height: 100%;
