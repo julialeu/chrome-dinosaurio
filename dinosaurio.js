@@ -1,11 +1,21 @@
 const player = document.getElementById("player");
+
 const cactus = document.getElementById("cactus");
+
 const background = document.getElementById("background");
 
+// const buttonFlow = document.getElementById("button-flow")
+
 const buttonPlayStop = document.getElementById("buttonPlayStop");
+
 let scoreInterval;
+
 let score = 0;
+
 const board = document.getElementById("board");
+
+// let gameLoop;
+
 
 board.addEventListener('click', function () {
     playerJump();
@@ -52,6 +62,12 @@ function pauseGame() {
     stopScore();
 }
 
+// function lostGame() {
+//     cancelAnimationFrame(gameLoop)
+//     pauseGame();
+//     buttonFlow.classList.add("reset")
+// }
+
 function stopScore() {
     clearInterval(scoreInterval);
 }
@@ -86,7 +102,19 @@ function restartGame() {
     cactus.classList.remove("cactusMovement");
     cactus.classList.add("cactusMovement");
 
+    // gameLoop = requestAnimationFrame(checkCondition);
 }
+
+// function checkCondition() {
+//     if (
+//         cactus.offsetLeft < (player.offsetLeft + 49)
+//         && cactus.offsetLeft > player.offsetLeft
+//         && (player.offsetTop >= (cactus.offsetTop - player.offsetHeight))
+//     ) {
+//         lostGame();
+//     }
+//     gameLoop = requestAnimationFrame(checkCondition)
+// }
 
 function resetScore() {
     score = 0;
