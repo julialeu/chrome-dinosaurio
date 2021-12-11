@@ -1,84 +1,87 @@
-body {
+body{
     margin: 0px;
 }
 
-#board {
+#board{
     background-color: blue;
     width: 100%;
     height: 600px;
     position: relative;
 }
 
-#player {
+#player{
     width: 70px;
     height: 70px;
     position: absolute;
     bottom: 190px;
-    left: 80px;
-    border: solid red;
+    left: 100px;
 }
 
-#player img {
-    width: 70px;
-    height: 70px;
+#player img{
+    width: 100%;
+    height: 100%;
 }
 
-#background {
+.playerJump{
+    animation: playerJump 1s linear;
+}
+
+@keyframes playerJump {
+    0%{
+        bottom: 190px;
+    }
+    45%, 55%{
+        bottom: 300px;
+    }
+}
+
+#background{
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background: url("images/background.png");
+    background: url("./images/background.png");
     background-repeat: repeat;
     background-position: 0 0;
     background-size: auto 100%;
-    animation: backgroundMove 5s linear infinite;
-
+    animation: animatedBackground 25s linear infinite;
 }
 
-.playerJump {
-    animation: playerJump 1s linear;
-
-}
-@keyframes playerJump {
-    0% {
-        bottom: 190px;
-    }
-    45%, 55% {
-        bottom: 300px;
-    }
-}
-
-@keyframes backgroundMove {
+@keyframes animatedBackground {
     from {
         background-position: 0 0;
     }
     to {
-        background-position: -3000px 0;
+        background-position: -10000px 0;
     }
 }
 
-#cactus {
+#cactus{
     position: absolute;
-    width: 55px;
-    height: 80px;
     bottom: 180px;
-    right: 0;
-    border: solid red;
+    right: 0px;
+    height: 80px;
+    width: 55px;
 }
 
-.cactusMovement {
-    animation: cactusMovement 2s linear infinite;
-
+.animatedCactus{
+    animation: movementCactus 2s linear infinite;
 }
-#cactus img {
+
+#cactus img{
     max-width: 100%;
     max-height: 100%;
 }
 
-@keyframes cactusMovement {
-    0%{
+#scoreContainer{
+    text-align-last: center;
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+@keyframes movementCactus {
+    0% {
         right: 0%;
     }
     100%{
@@ -86,13 +89,12 @@ body {
     }
 }
 
-.scoreContainer {
-    font-size: 50px;
-    text-align-last: center;
-    margin-top: 20px;
+.menu{
+    display: flex;
+    justify-content: center;
 }
 
-.button.play {
+.button.play, .button.reset {
     border-style: solid;
     border-width: 37px 0 37px 60px;
 }
@@ -110,11 +112,7 @@ body {
     border-width: 0px 0 0px 60px;
 }
 
-button:hover {
+.button:hover {
     border-color: transparent transparent transparent #404040;
 }
 
-.menu {
-    display: flex;
-    justify-content: center;
-}
